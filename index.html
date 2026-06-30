@@ -392,10 +392,10 @@
           We decompose this target into three interpretable terms:
         </p>
         <div class="equation-box has-text-centered">
-          $$J(\textcolor{red}{\mu_{k+1}}) - J(\textcolor{red}{\mu_k}) = \underbrace{J(\textcolor{red}{\mu_{k+1}}) - J(\textcolor{blue}{\pi_{k+1}})}_{\text{\textcircled{1} post-update inference gap}} + \underbrace{J(\textcolor{blue}{\pi_{k+1}}) - J(\textcolor{blue}{\pi_k})}_{\text{\textcircled{2} training-side update}} + \underbrace{J(\textcolor{blue}{\pi_k}) - J(\textcolor{red}{\mu_k})}_{\text{\textcircled{3} pre-update inference gap}}.$$
+          $$J(\textcolor{red}{\mu_{k+1}}) - J(\textcolor{red}{\mu_k}) = \underbrace{J(\textcolor{red}{\mu_{k+1}}) - J(\textcolor{blue}{\pi_{k+1}})}_{\text{① post-update inference gap}} + \underbrace{J(\textcolor{blue}{\pi_{k+1}}) - J(\textcolor{blue}{\pi_k})}_{\text{② training-side update}} + \underbrace{J(\textcolor{blue}{\pi_k}) - J(\textcolor{red}{\mu_k})}_{\text{③ pre-update inference gap}}.$$
         </div>
         <p>
-          Terms \textcircled{2} and \textcircled{3} form a <strong>sampler-referenced policy update</strong> (Step 1), while Term \textcircled{1} is used for <strong>inference-gap-aware acceptance</strong> (Step 2).
+          Terms ② and ③ form a <strong>sampler-referenced policy update</strong> (Step 1), while Term ① is used for <strong>inference-gap-aware acceptance</strong> (Step 2).
         </p>
       </div>
     </div>
