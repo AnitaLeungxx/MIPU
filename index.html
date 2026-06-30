@@ -35,7 +35,7 @@
   <meta name="twitter:creator" content="@MIPU_paper">
   <meta name="twitter:title" content="MIPU: Monotonic Inference Policy Update for LLM RL">
   <meta name="twitter:description" content="MIPU proposes Monotonic Inference Policy Improvement (MIPI), a new objective for LLM reinforcement learning that optimizes the deployed inference policy instead of the training policy under training-inference mismatch.">
-  <meta name="twitter:image" content="https://anitaleungxx.github.io/MIPU/static/images/main_fig.png">
+  <meta name="twitter:image" content="https://anitaleungxx.github.io/MIPU/static/images/main.png">
   <meta name="twitter:image:alt" content="MIPU - Monotonic Inference Policy Update">
 
   <!-- Academic/Research Specific -->
@@ -235,7 +235,7 @@
     "datePublished": "2026-06-28",
     "publisher": {"@type": "Organization", "name": "arXiv"},
     "url": "https://anitaleungxx.github.io/MIPU/",
-    "image": "https://anitaleungxx.github.io/MIPU/static/images/main_fig.png",
+    "image": "https://anitaleungxx.github.io/MIPU/static/images/main.png",
     "keywords": ["LLM", "Reinforcement Learning", "Training-Inference Mismatch", "GRPO", "Policy Optimization"],
     "abstract": "Reinforcement learning (RL) has gained growing attention in large language model (LLM) post-training, yet RL training remains fragile and can suffer from instability or collapse. One vital cause is training-inference mismatch: LLM adopts separate inference and training engines for generation efficiency and training precision, which in practice exhibits inconsistent probabilities for the same trajectories on training and inference sides, even with synchronized model parameters. This naturally induces a special type of off-policyness ever existing and poisoning the training. Prior works have made various efforts in addressing the off-policyness to stabilize the training policies under the mismatch. In this paper, we point out the objective misalignment neglected by existing works that an effective update to the policy in the training engine not necessarily ensures the improvement of the inference policy, i.e., the one used in deployment. To this end, we propose a new policy optimization objective for LLM RL, named Monotonic Inference Policy Improvement (MIPI). Following this principle, we introduce Monotonic Inference Policy Update (MIPU), a two-step LLM RL framework that constructs sampler-referenced candidate updates and selectively accepts synchronized candidates using an inference-side gap proxy. Experiments conducted on two model scales under high mismatch show that MIPU improves average reasoning performance and training stability.",
     "isAccessibleForFree": true,
@@ -303,7 +303,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <img src="static/images/main_fig.png" alt="MIPU overview" loading="lazy" style="width: 100%; max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);"/>
+        <img src="static/images/main.png" alt="MIPU overview" loading="lazy" style="width: 100%; max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);"/>
         <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
           <strong>MIPU</strong> resolves the <em>objective misalignment</em> of LLM RL by optimizing the inference policy instead of the training policy.
         </h2>
