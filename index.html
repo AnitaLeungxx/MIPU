@@ -303,7 +303,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <img src="static/images/main_0615v1.png" alt="MIPU overview" loading="lazy" style="border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);"/>
+        <img src="static/images/main_fig.png" alt="MIPU overview" loading="lazy" style="width: 100%; max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);"/>
         <h2 class="subtitle has-text-centered" style="margin-top: 1rem;">
           <strong>MIPU</strong> resolves the <em>objective misalignment</em> of LLM RL by optimizing the inference policy instead of the training policy.
         </h2>
@@ -438,7 +438,7 @@
             After synchronizing $\textcolor{blue}{\pi_{k+1}} \to \textcolor{red}{\mu_{k+1}}$, Step 2 estimates the post-update inference gap:
           </p>
           <div class="equation-box has-text-centered">
-            $$\widehat{T}_{\mathrm{post}} = -\mathbb{E}_{x\sim\mathcal{D}_{\mathrm{val}},\, y_i \sim \textcolor{red}{\mu_{k+1}}}\left[\rho_i \, \hat{A}^{\textcolor{red}{\mu_{k+1}}}_i\right], \quad \rho_i = \exp\left(\frac{1}{T_i}\sum_{t=1}^{T_i} \log \frac{\textcolor{blue}{\pi_{k+1}}(y_{i,t}\mid x,y_{i,<t})}{\textcolor{red}{\mu_{k+1}}(y_{i,t}\mid x,y_{i,<t})}\right).$$
+            $$\widehat{T}_{\mathrm{post}} = -\mathbb{E}_{x\sim\mathcal{D}_{\mathrm{val}},\, y_i \sim \textcolor{red}{\mu_{k+1}}}\left[\rho_i \, \hat{A}^{\textcolor{red}{\mu_{k+1}}}_i\right], \quad \rho_i = \exp\left(\frac{1}{T_i}\sum_{t=1}^{T_i} \log \frac{\textcolor{blue}{\pi_{k+1}}(y_{i,t}\mid x,y_{i,&lt;t})}{\textcolor{red}{\mu_{k+1}}(y_{i,t}\mid x,y_{i,&lt;t})}\right).$$
           </div>
           <p>
             The candidate is <strong>accepted</strong> if $\widehat{T}_{\mathrm{post}} \geq -c$, and <strong>rolled back</strong> otherwise. This ensures that training-side gains are actually realized by the inference engine.
