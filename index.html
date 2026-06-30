@@ -316,16 +316,18 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">TL;DR</h2>
+          <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Reinforcement learning (RL) has become central to LLM post-training, but RL training is fragile and can collapse. A key culprit is <strong>training-inference mismatch</strong>: modern LLM RL pipelines use separate inference engines (e.g., vLLM) and training engines (e.g., Megatron), which can assign different probabilities to the same trajectories even with synchronized parameters.
+              Reinforcement learning (RL) has gained growing attention in large language model (LLM) post-training, yet RL training remains fragile and can suffer from instability or collapse. One vital cause is <em>training-inference mismatch</em>: LLM RL adopts separate inference and training engines for generation efficiency and training precision, which in practice exhibit inconsistent probabilities for the same trajectories on training and inference sides, even with synchronized model parameters. This naturally induces a special type of off-policyness that persistently exists and poisons the training process.
             </p>
+          
             <p>
-              Existing methods try to stabilize the <em>training</em> policy under this mismatch. We point out a neglected issue: <strong>objective misalignment</strong>. An update that improves the training policy does <em>not</em> necessarily improve the inference policy that is actually deployed.
+              Prior works have made various efforts to address this off-policyness and stabilize the training policies under the mismatch. In this paper, we point out an overlooked issue of <strong>objective misalignment</strong>: an effective update to the policy in the training engine does not necessarily ensure the improvement of the inference policy, i.e., the policy actually used during deployment.
             </p>
+          
             <p>
-              We propose <strong>Monotonic Inference Policy Improvement (MIPI)</strong> &mdash; a new principle that takes the improvement of the deployed inference policy as the optimization target. We then introduce <strong>Monotonic Inference Policy Update (MIPU)</strong>, a two-step framework that (1) constructs sampler-referenced candidate updates and (2) selectively accepts synchronized candidates via an inference-side gap proxy.
+              To this end, we propose a new policy optimization objective for LLM RL, named <strong>Monotonic Inference Policy Improvement (MIPI)</strong>. Following this principle, we introduce <strong>Monotonic Inference Policy Update (MIPU)</strong>, a two-step LLM RL framework that constructs sampler-referenced candidate updates and selectively accepts synchronized candidates using an inference-side gap proxy. Experiments conducted on two model scales under high mismatch demonstrate that <strong>MIPU</strong> improves both average reasoning performance and training stability.
             </p>
           </div>
         </div>
@@ -386,10 +388,10 @@
           We propose to take the <strong>inference-policy improvement</strong> as the direct optimization objective:
         </p>
         <div class="equation-box has-text-centered">
-          $$\text{Target:} \quad J(\textcolor{red}{\mu_{k+1}}) - J(\textcolor{red}{\mu_k}).$$
+          $$J(\textcolor{red}{\mu_{k+1}}) - J(\textcolor{red}{\mu_k}).$$
         </div>
         <p>
-          We decompose this target into three interpretable terms:
+          We decompose this objective into three interpretable terms:
         </p>
         <div class="equation-box has-text-centered">
           $$J(\textcolor{red}{\mu_{k+1}}) - J(\textcolor{red}{\mu_k}) = \underbrace{J(\textcolor{red}{\mu_{k+1}}) - J(\textcolor{blue}{\pi_{k+1}})}_{\text{① post-update inference gap}} + \underbrace{J(\textcolor{blue}{\pi_{k+1}}) - J(\textcolor{blue}{\pi_k})}_{\text{② training-side update}} + \underbrace{J(\textcolor{blue}{\pi_k}) - J(\textcolor{red}{\mu_k})}_{\text{③ pre-update inference gap}}.$$
